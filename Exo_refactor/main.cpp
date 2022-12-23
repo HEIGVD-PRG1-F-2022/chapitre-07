@@ -9,13 +9,19 @@ int main() {
   // Faites un refactoring des boucles suivantes pour utiliser les
   // "best practices" vu dans le cours:
   vector<int> a(10), b;
-  for (size_t i = 0; i < 10; i++) {
-    b.push_back(a.at(i) * 2);
+  iota(a.begin(), a.end(), 0);
+  for (auto el: a) {
+    b.push_back(el * 2);
   }
 
-  for (size_t i = 0; i < 10; i++) {
-    b.at(i) = int(2 * i);
+//  int i = 0;
+//  generate(b.begin(),b.end(),[&i] { return i++*2;});
+  for (int i = 0; auto &el: b) {
+    el = int(2 * i++);
   }
+
+  copy(b.begin(), b.end(), a.begin());
+  a.assign(b.begin(), b.end());
 
   for (size_t i = 0; i < 10; i++) {
     a.at(i) = b.at(i);

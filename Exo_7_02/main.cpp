@@ -8,9 +8,14 @@ static void afficher(const Point& p) {
 }
 
 int main() {
-   const Point P1(1,2);
-   const Point P2 = Point(3,4); // autre manière d'écrire les choses
-   afficher(P1 + P2);
+   Point p(1.2f, 2.4f);
+   afficher(p);
+   p.deplacer(0.8f, 0.6f);
+   afficher(p);
+
+//   Point* ptr = new Point;
+//   afficher(*ptr);
+//   delete ptr;
 
    system("PAUSE");
    return EXIT_SUCCESS;
